@@ -9,7 +9,13 @@ Inline.prototype = {
     initAddRow: function($inline) {
         $inline.on('click', '.add-row a', function() {
             var $inlineItem = $inline.find('.inline-related:not(.empty-form)').last();
-            $inline.trigger('inline-group-row:added', [$inlineItem]);
+            // Deprecated?
+            // $inline.trigger('inline-group-row:added', [$inlineItem]);
+            $inline.trigger('formset:added', [$inlineItem]);
+        });
+        $inline.on('click', '.delete a', function() {
+            var $inlineItem = $inline.find('.inline-related:not(.empty-form)').last();
+            $inline.trigger('formset:removed', [$inlineItem]);
         });
     },
     run: function() {
